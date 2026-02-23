@@ -1,6 +1,6 @@
 # Z-Image Studio (INT8)
 
-Z-Image Studio (INT8) 是一款基于 **Z-Image-INT8** 模型（ModelScope）构建的现代化 Web 应用。通过直观的 UI 界面，用户只需输入自然语言 prompt 即可快速本地生成高质量的图像，整个项目采用了前后端分离的架构。
+Z-Image Studio (INT8) 是一款基于 [**Z-Image-INT8**](https://modelscope.cn/models/iximbox/Z-Image-INT8) 模型（ModelScope）构建的现代化 Web 应用。通过直观的 UI 界面，用户只需输入自然语言 prompt 即可快速本地生成高质量的图像，整个项目采用了前后端分离的架构。
 
 本应用致力于探索和提供 INT8 量化模型的高效推理特性，为端侧设备上的文本到图像的生成提供便利。项目后端基于 FastAPI 构建，前端使用 React + Vite 驱动。
 
@@ -102,7 +102,7 @@ chmod +x start.sh
 ## 📂 目录结构
 
 ```text
-Z-ImageStudio/
+Z-Image-INT8-Studio/
 ├── backend/                  # 后端服务代码
 │   ├── main.py               # FastAPI 入口
 │   ├── model.py              # Z-Image 模型封装
@@ -125,4 +125,4 @@ Z-ImageStudio/
 
 本项目所涉及的技术与衍生代码受相应开源许可证约束。使用 **Z-Image-INT8** 等内容请遵照 ModelScope/Apache-2.0 及原模型（`Tongyi-MAI/Z-Image`）的许可协议。
 
-**Powered by Z-Image-INT8 · Tongyi-MAI**
+**Powered by [Z-Image-INT8](https://modelscope.cn/models/iximbox/Z-Image-INT8) · [Tongyi-MAI](https://www.modelscope.cn/organization/Tongyi-MAI)**
