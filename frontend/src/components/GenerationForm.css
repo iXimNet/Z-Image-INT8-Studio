@@ -1,0 +1,425 @@
+/* ========================================
+   Generation Form — Compact Frameless
+   ======================================== */
+
+.gen-root {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ===== Presets ===== */
+.presets-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.preset-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.preset-chip:hover {
+    background: rgba(124, 92, 252, 0.1);
+    border-color: rgba(124, 92, 252, 0.3);
+    color: var(--accent-light);
+}
+
+/* ===== Error ===== */
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(251, 113, 133, 0.08);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+    border-radius: var(--radius-sm);
+    color: var(--rose);
+    font-size: 0.82rem;
+}
+
+.error-banner span {
+    flex: 1;
+}
+
+.error-dismiss {
+    background: none;
+    border: none;
+    color: var(--rose);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+}
+
+.error-dismiss:hover {
+    opacity: 1;
+}
+
+/* ===== Form ===== */
+.gen-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field label,
+.field>label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.char-count {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Text inputs */
+.text-input {
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.text-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Hide number input spin buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* ===== Size Chips — compact inline ===== */
+.size-hint {
+    font-weight: 400;
+    color: var(--text-tertiary);
+    font-size: 0.72rem;
+    margin-left: 0.4rem;
+}
+
+.size-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.size-chip {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-full);
+    background: rgba(0, 0, 0, 0.15);
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-chip:hover {
+    border-color: rgba(124, 92, 252, 0.2);
+    color: var(--text-secondary);
+}
+
+.size-chip.active {
+    background: rgba(124, 92, 252, 0.15);
+    border-color: var(--accent);
+    color: var(--accent-light);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Custom size row */
+.custom-size-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+}
+
+.custom-sep {
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+}
+
+/* Custom Number Input with Step Controls */
+.custom-number-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.custom-number-input .num-input-sm {
+    padding-right: 24px;
+    /* Make room for step buttons */
+    width: 90px;
+}
+
+.step-controls {
+    position: absolute;
+    right: 2px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 4px);
+    justify-content: center;
+}
+
+.step-controls button {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 0.5rem;
+    padding: 0 4px;
+    height: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+    border-radius: 3px;
+}
+
+.step-controls button:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.step-controls button:active {
+    color: var(--accent);
+}
+
+/* ===== Params Row — compact horizontal ===== */
+.params-row {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-sm);
+}
+
+.param-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.param-inline label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.param-inline .pv {
+    font-weight: 700;
+    color: var(--accent-light);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Seed inline */
+.seed-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.seed-inline .num-input-sm {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Small number input */
+.num-input-sm {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.num-input-sm:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.num-input-sm::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Mini dice button */
+.dice-btn-sm {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.dice-btn-sm:hover {
+    background: rgba(124, 92, 252, 0.1);
+    border-color: rgba(124, 92, 252, 0.3);
+}
+
+/* Slider wrapper for vertical centering */
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    /* Matches dice-btn-sm height */
+}
+
+/* Compact range */
+.range-sm {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.range-sm::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 6px var(--accent-glow);
+    cursor: pointer;
+}
+
+.range-sm::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 6px var(--accent-glow);
+    cursor: pointer;
+}
+
+/* ===== Submit ===== */
+.submit-btn {
+    position: relative;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 50%, var(--emerald) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    color: white;
+    transition: all 0.3s var(--ease-out-expo);
+    box-shadow: 0 4px 20px var(--accent-glow);
+    margin-top: 0.25rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.submit-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.submit-btn.is-loading {
+    background: var(--bg-tertiary);
+    animation: none;
+    box-shadow: none;
+}
+
+.btn-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    .params-row {
+        grid-template-columns: 1fr;
+    }
+}

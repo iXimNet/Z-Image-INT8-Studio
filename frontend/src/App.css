@@ -1,0 +1,331 @@
+/* ========================================
+   App Shell Layout & Header
+   ======================================== */
+
+.app-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  /* Disable page-level scroll */
+}
+
+/* ===== Ambient Orbs ===== */
+.ambient-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(124, 92, 252, 0.15);
+  top: -10%;
+  left: -5%;
+  animation-duration: 25s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(52, 211, 153, 0.1);
+  bottom: -5%;
+  right: -5%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: rgba(251, 113, 133, 0.08);
+  top: 40%;
+  left: 60%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(15px, 30px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-10px, -15px) scale(1);
+  }
+}
+
+/* ===== Header ===== */
+.app-header {
+  flex-shrink: 0;
+  z-index: 20;
+  padding: 0.75rem 1.5rem;
+  background: rgba(8, 12, 24, 0.7);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  display: flex;
+  filter: drop-shadow(0 0 8px rgba(124, 92, 252, 0.4));
+}
+
+.brand-text {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-text h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.brand-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--emerald) 100%);
+  color: white;
+}
+
+/* Header Right */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.model-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s;
+}
+
+.model-link:hover {
+  color: var(--accent-light);
+  border-color: rgba(124, 92, 252, 0.25);
+  background: rgba(124, 92, 252, 0.08);
+}
+
+/* ===== Main — Merged Two-Column Layout ===== */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  /* NO SCROLLING on main wrapper */
+}
+
+.app-layout {
+  flex: 1;
+  width: 100%;
+  /* No max-width or margin auto here - we do it via padding! */
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 1.5rem;
+  padding-left: max(1.5rem, calc(50vw - 700px));
+  /* Align left edge of content to 1400px center */
+  overflow: hidden;
+  /* Constrain grid to flex bounds */
+}
+
+.layout-left {
+  height: 100%;
+  /* Take full grid height */
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  overflow-y: auto;
+  /* Independent scroll for left */
+  /* Scrollbar auto hide for left side */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
+}
+
+.layout-left:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.layout-left::-webkit-scrollbar {
+  width: 4px;
+}
+
+.layout-left::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.layout-left::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.layout-left:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.layout-right {
+  min-width: 0;
+  height: 100%;
+  /* Take full grid height */
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  /* Push inner content left to align with 1400px max-width, while box extends to browser edge! */
+  padding-right: max(1.5rem, calc(50vw - 700px));
+  overflow-y: auto;
+  /* Independent scroll for right */
+
+  /* Scrollbar auto hide for right side - this sits ON THE BROWSER EDGE! */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
+}
+
+.layout-right:hover {
+  scrollbar-color: rgba(124, 92, 252, 0.25) transparent;
+}
+
+.layout-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.layout-right::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.layout-right::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 99px;
+  transition: background 0.3s;
+}
+
+.layout-right:hover::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 252, 0.25);
+}
+
+/* ===== Footer ===== */
+.app-footer {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.app-footer strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.footer-sep {
+  margin: 0 0.4rem;
+  opacity: 0.4;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .app-shell {
+    height: auto;
+    overflow: visible;
+  }
+
+  .app-main,
+  .app-layout {
+    display: block;
+    overflow: visible;
+  }
+
+  .app-layout {
+    padding: 1.5rem;
+    /* Standard padding for mobile */
+  }
+
+  .layout-left,
+  .layout-right {
+    height: auto;
+    overflow-y: visible;
+    padding: 0;
+  }
+
+  .layout-right {
+    margin-top: 1.5rem;
+    /* Gap replacement */
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+}
