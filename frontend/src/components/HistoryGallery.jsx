@@ -249,6 +249,11 @@ const HistoryGallery = forwardRef(({ onSelectImage, apiBase, onGeneratingChange 
                             </div>
                         ) : task.status === 'failed' ? (
                             <div className="card-status failed">
+                                <button className="delete-card-btn" onClick={(e) => handleDelete(e, task.id)} aria-label="删除失败记录">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" /></svg>
                                 <span>生成失败</span>
                                 {task.error_message && <p className="error-detail">{task.error_message.substring(0, 50)}</p>}
