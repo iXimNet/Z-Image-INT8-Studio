@@ -6,6 +6,18 @@ from model import model_instance
 import threading
 import os
 
+import logging
+
+class EndpointFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        msg = record.getMessage()
+        if msg.find("/api/status/") != -1: return False
+        if msg.find("/images/") != -1: return False
+        if msg.find("/api/history") != -1: return False
+        return True
+
+logging.getLogger("uvicorn.access").addFilter(EndpointFilter())
+
 app = FastAPI(title="Z-Image-INT8 API")
 
 # Configure CORS for frontend access
